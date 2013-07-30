@@ -78,7 +78,6 @@ typedef enum {
    CUSTOM_METERMODE = 0,
    BAR_METERMODE,
    TEXT_METERMODE,
-   MULTITEXT_METERMODE,
    GRAPH_METERMODE,
    LED_METERMODE,
    LAST_METERMODE
@@ -113,9 +112,6 @@ ListItem* Meter_toListItem(Meter* this);
 
 /* ---------- TextMeterMode ---------- */
 
-/* ---------- MultiTextMeterMode ---------- */
-
-
 /* ---------- BarMeterMode ---------- */
 
 /* ---------- GraphMeterMode ---------- */
@@ -123,7 +119,6 @@ ListItem* Meter_toListItem(Meter* this);
 #define DrawDot(a,y,c) do { attrset(a); mvaddch(y, x+k, c); } while(0)
 
 /* ---------- LEDMeterMode ---------- */
-
 
 extern MeterMode* Meter_modes[];
 

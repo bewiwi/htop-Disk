@@ -17,7 +17,6 @@ in the source distribution for its full text.
 #include "ClockMeter.h"
 #include "HostnameMeter.h"
 #include "DiskMeter.h"
-#include "AllDiskMeter.h"
 #include "RichString.h"
 #include "Object.h"
 #include "CRT.h"
@@ -102,7 +101,6 @@ typedef enum {
    CUSTOM_METERMODE = 0,
    BAR_METERMODE,
    TEXT_METERMODE,
-   MULTITEXT_METERMODE,
    GRAPH_METERMODE,
    LED_METERMODE,
    LAST_METERMODE
@@ -146,7 +144,7 @@ MeterClass* Meter_types[] = {
    &RightCPUsMeter_class,
    &LeftCPUs2Meter_class,
    &RightCPUs2Meter_class,
-   &AllDISKSMeter_class,
+   &AllDisksMeter_class,
    NULL
 };
 
@@ -249,27 +247,6 @@ static void TextMeterMode_draw(Meter* this, int x, int y, int w) {
    RichString_printVal(out, y, x);
    RichString_end(out);
 }
-
-/* ---------- MultiTextMeterMode ---------- */
-
-static void MultiTextMeterMode_draw(Meter* this, int x, int y, int w) {
-   char buffer[METER_BUFFER_LEN];
-   Meter_setValues(this, buffer, METER_BUFFER_LEN - 1);
-
-   attrset(CRT_colors[METER_TEXT]);
-   //mvaddstr(y, x, this->caption);
-   mvaddstr(y, x, "this->caption");
-   int captionLen = strlen(this->caption);
-   w -= captionLen;
-   x += captionLen;
-   mvhline(y, x, ' ', CRT_colors[DEFAULT_COLOR]);
-   attrset(CRT_colors[RESET_COLOR]);
-   RichString_begin(out);
-   Meter_displayBuffer(this, buffer, &out);
-   RichString_printVal(out, y, x);
-   RichString_end(out);
-}
-
 
 /* ---------- BarMeterMode ---------- */
 
@@ -470,13 +447,6 @@ static MeterMode TextMeterMode = {
    .draw = TextMeterMode_draw,
 };
 
-static MeterMode MultiTextMeterMode = {
-   .uiName = "MultiText",
-   .h = 1,
-   .draw = MultiTextMeterMode_draw,
-};
-
-
 static MeterMode GraphMeterMode = {
    .uiName = "Graph",
    .h = 3,
@@ -493,7 +463,6 @@ MeterMode* Meter_modes[] = {
    NULL,
    &BarMeterMode,
    &TextMeterMode,
-   &MultiTextMeterMode,
    &GraphMeterMode,
    &LEDMeterMode,
    NULL
