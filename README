@@ -1,4 +1,3 @@
-
 htop
 by Hisham Muhammad <loderunner@users.sourceforge.net>
 
@@ -50,3 +49,20 @@ See the manual page (man htop) or the on-line help ('F1' or 'h'
 inside htop) for a list of supported key commands.
 
 if not all keys work check your curses configuration.
+
+
+DiskMeter Fork by Bewiwi
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+This fork add a new meter for disk usage , blocks and inodes.
+
+compilation :
+./autogen.sh
+./configure
+make
+
+
+Add the meter : 
+run ./htop
+press <F2> 
+and add AllDisk in a column.
