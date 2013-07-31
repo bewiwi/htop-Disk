@@ -20,7 +20,7 @@
 }*/
 
 int DiskMeter_attributes[] = {
-    HOSTNAME
+    DISK_BLOCK,DISK_INODE
 };
 
 static void Disk_getListPart(int id,char* part,int* count){
@@ -56,13 +56,19 @@ static void DiskMeter_display(Object* cast, RichString* out) {
     char buffer[50];
     Meter* this = (Meter*)cast;
 
-    sprintf(buffer, "%5.1f%% ", this->values[0]);
-    RichString_append(out, CRT_colors[HOSTNAME], buffer);
+    RichString_append(out, CRT_colors[METER_TEXT], " : ");
+    sprintf(buffer, "%5.1f%% ", this->values[0]); 
+    RichString_append(out, CRT_colors[METER_TEXT], "bl:");
+    RichString_append(out, CRT_colors[DISK_BLOCK], buffer);
+    sprintf(buffer, "%5.1f%% ", this->values[1]);
+    RichString_append(out, CRT_colors[METER_TEXT], "in:");
+    RichString_append(out, CRT_colors[DISK_INODE], buffer);
 }
 
 static void DiskMeter_setValues(Meter* this, char* buffer, int size) {
     struct statvfs info;
     uint64_t percent;
+    uint64_t percent_inode;
     int id ;
     char part[100];
     int count;
@@ -76,6 +82,12 @@ static void DiskMeter_setValues(Meter* this, char* buffer, int size) {
     uintmax_t nonroot_total =info.f_blocks ;
     percent = u100 / nonroot_total + (u100 % nonroot_total != 0);
     this->values[0]= percent;
+    
+    
+    u100 = (info.f_files - info.f_ffree)  * 100;
+    nonroot_total =info.f_files ;
+    percent_inode = u100 / nonroot_total + (u100 % nonroot_total != 0);
+    this->values[1]= percent_inode;
 
     snprintf(buffer,size,"%d%%",percent);
 }

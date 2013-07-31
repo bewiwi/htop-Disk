@@ -87,6 +87,8 @@ typedef enum ColorElements_ {
    CLOCK,
    HELP_BOLD,
    HOSTNAME,
+   DISK_BLOCK,
+   DISK_INODE,
    CPU_NICE,
    CPU_NORMAL,
    CPU_KERNEL,

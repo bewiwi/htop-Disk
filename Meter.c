@@ -137,7 +137,6 @@ MeterClass* Meter_types[] = {
    &UptimeMeter_class,
    &BatteryMeter_class,
    &HostnameMeter_class,
-   &DiskMeter_class,
    &AllCPUsMeter_class,
    &AllCPUs2Meter_class,
    &LeftCPUsMeter_class,

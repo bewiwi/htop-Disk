@@ -96,6 +96,8 @@ typedef enum ColorElements_ {
    CLOCK,
    HELP_BOLD,
    HOSTNAME,
+   DISK_BLOCK,
+   DISK_INODE,
    CPU_NICE,
    CPU_NORMAL,
    CPU_KERNEL,
@@ -294,6 +296,8 @@ void CRT_setColors(int colorScheme) {
       CRT_colors[CHECK_MARK] = A_NORMAL;
       CRT_colors[CHECK_TEXT] = A_NORMAL;
       CRT_colors[HOSTNAME] = A_BOLD;
+      CRT_colors[DISK_BLOCK] = A_BOLD;
+      CRT_colors[DISK_INODE] = A_BOLD;
       CRT_colors[CPU_NICE] = A_NORMAL;
       CRT_colors[CPU_NORMAL] = A_BOLD;
       CRT_colors[CPU_KERNEL] = A_BOLD;
@@ -355,6 +359,8 @@ void CRT_setColors(int colorScheme) {
       CRT_colors[CHECK_MARK] = ColorPair(Black,White);
       CRT_colors[CHECK_TEXT] = ColorPair(Black,White);
       CRT_colors[HOSTNAME] = ColorPair(Black,White);
+      CRT_colors[DISK_BLOCK] = ColorPair(Black,White);
+      CRT_colors[DISK_INODE] = ColorPair(Black,White);
       CRT_colors[CPU_NICE] = ColorPair(Cyan,White);
       CRT_colors[CPU_NORMAL] = ColorPair(Green,White);
       CRT_colors[CPU_KERNEL] = ColorPair(Red,White);
@@ -416,6 +422,8 @@ void CRT_setColors(int colorScheme) {
       CRT_colors[CHECK_MARK] = ColorPair(Black,Black);
       CRT_colors[CHECK_TEXT] = ColorPair(Black,Black);
       CRT_colors[HOSTNAME] = ColorPair(White,Black);
+      CRT_colors[DISK_BLOCK] = ColorPair(White,Black);
+      CRT_colors[DISK_INODE] = ColorPair(White,Black);
       CRT_colors[CPU_NICE] = ColorPair(Cyan,Black);
       CRT_colors[CPU_NORMAL] = ColorPair(Green,Black);
       CRT_colors[CPU_KERNEL] = ColorPair(Red,Black);
@@ -477,6 +485,8 @@ void CRT_setColors(int colorScheme) {
       CRT_colors[CHECK_MARK] = A_BOLD | ColorPair(White,Blue);
       CRT_colors[CHECK_TEXT] = A_NORMAL | ColorPair(White,Blue);
       CRT_colors[HOSTNAME] = ColorPair(White,Blue);
+      CRT_colors[DISK_BLOCK] = ColorPair(White,Blue);
+      CRT_colors[DISK_INODE] = ColorPair(White,Blue);
       CRT_colors[CPU_NICE] = A_BOLD | ColorPair(Cyan,Blue);
       CRT_colors[CPU_NORMAL] = A_BOLD | ColorPair(Green,Blue);
       CRT_colors[CPU_KERNEL] = A_BOLD | ColorPair(Red,Blue);
@@ -538,6 +548,8 @@ void CRT_setColors(int colorScheme) {
       CRT_colors[CHECK_MARK] = A_BOLD | ColorPair(Green,Black);
       CRT_colors[CHECK_TEXT] = ColorPair(Cyan,Black);
       CRT_colors[HOSTNAME] = ColorPair(Green,Black);
+      CRT_colors[DISK_BLOCK] = ColorPair(Green,Black);
+      CRT_colors[DISK_INODE] = ColorPair(Green,Black);
       CRT_colors[CPU_NICE] = ColorPair(Blue,Black);
       CRT_colors[CPU_NORMAL] = ColorPair(Green,Black);
       CRT_colors[CPU_KERNEL] = ColorPair(Red,Black);
@@ -600,6 +612,8 @@ void CRT_setColors(int colorScheme) {
       CRT_colors[CHECK_MARK] = A_BOLD;
       CRT_colors[CHECK_TEXT] = A_NORMAL;
       CRT_colors[HOSTNAME] = A_BOLD;
+      CRT_colors[DISK_BLOCK] = A_BOLD;
+      CRT_colors[DISK_INODE] = A_BOLD;
       CRT_colors[CPU_NICE] = ColorPair(Blue,Black);
       CRT_colors[CPU_NORMAL] = ColorPair(Green,Black);
       CRT_colors[CPU_KERNEL] = ColorPair(Red,Black);
